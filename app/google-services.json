@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "627207421226",
+    "firebase_url": "https://notificacionesproyect.firebaseio.com",
+    "project_id": "notificacionesproyect",
+    "storage_bucket": "notificacionesproyect.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627207421226:android:9a759ade49adfd02",
+        "android_client_info": {
+          "package_name": "com.andrecastrom.notificaciones"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627207421226-m341an90lg6av91hla61n789dfkio09m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDm4XgVpLu7pUg0LLW5lKV3IwTbGJXsMzo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
