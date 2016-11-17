@@ -10,7 +10,11 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
+
+import com.google.firebase.iid.FirebaseInstanceId;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,5 +42,15 @@ public class MainActivity extends AppCompatActivity {
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(0, notificationCompat.build());
+    }
+
+
+    public void recibirNotificacion (View view) {
+        String token = FirebaseInstanceId.getInstance().getToken();
+        enviarTokenRegistro(token);
+    }
+
+    private void enviarTokenRegistro(String token) {
+        Log.d("TOKEN",token);
     }
 }
