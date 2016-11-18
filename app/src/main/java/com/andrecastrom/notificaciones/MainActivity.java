@@ -14,7 +14,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.andrecastrom.notificaciones.RestAPI.Endpoints;
+import com.andrecastrom.notificaciones.RestAPI.adapter.RestApiAdapter;
+import com.andrecastrom.notificaciones.RestAPI.model.UsuarioResponse;
 import com.google.firebase.iid.FirebaseInstanceId;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,5 +59,22 @@ public class MainActivity extends AppCompatActivity {
 
     private void enviarTokenRegistro(String token) {
         Log.d("TOKEN",token);
+        RestApiAdapter restApiAdapter = new RestApiAdapter();
+        Endpoints endpoints = restApiAdapter.establecerConexionRestAPI();
+        Call<UsuarioResponse> usuarioResponseCall = endpoints.registrarTokenID(token);
+
+        usuarioResponseCall.enqueue(new Callback<UsuarioResponse>() {
+            @Override
+            public void onResponse(Call<UsuarioResponse> call, Response<UsuarioResponse> response) {
+                UsuarioResponse usuarioResponse = response.body();
+                Log.d("ID_FIREBASE", usuarioResponse.getId());
+                Log.d("USUARIO_FIREBASE", usuarioResponse.getToken());
+            }
+
+            @Override
+            public void onFailure(Call<UsuarioResponse> call, Throwable t) {
+
+            }
+        });
     }
 }
