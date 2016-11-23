@@ -1,0 +1,6 @@
+heroku logs --tail
+npm install --save --save-exact fcm-push
+
+git add .
+git commit -m "Implementando metodo GET dar toque"
+git push heroku master

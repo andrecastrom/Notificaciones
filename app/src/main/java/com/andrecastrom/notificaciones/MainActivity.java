@@ -25,6 +25,10 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
+    private static final String ANIMAL_EMISOR = "lobo";
+    private static final String ANIMAL_RECEPTOR = "conejo";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("TOKEN",token);
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Endpoints endpoints = restApiAdapter.establecerConexionRestAPI();
-        Call<UsuarioResponse> usuarioResponseCall = endpoints.registrarTokenID(token);
+        Call<UsuarioResponse> usuarioResponseCall = endpoints.registrarTokenID(token, ANIMAL_RECEPTOR);
 
         usuarioResponseCall.enqueue(new Callback<UsuarioResponse>() {
             @Override
@@ -77,4 +81,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void toqueAnimal (View view) {
+        Log.d("TOQUE_ANIMAL", "true");
+        UsuarioResponse usuarioResponse = new UsuarioResponse("-KXFo7McpsO679ZUI04X","123",ANIMAL_RECEPTOR);
+        //UsuarioResponse usuarioResponse = new UsuarioResponse("-KXFo9MZvSbrsEWCBH2i","123",ANIMAL_EMISOR);
+        RestApiAdapter restApiAdapter = new RestApiAdapter();
+        Endpoints endpoints = restApiAdapter.establecerConexionRestAPI();
+        Call<UsuarioResponse> usuarioResponseCall = endpoints.toqueAnimal(usuarioResponse.getId(), usuarioResponse.getAnimal());
+        usuarioResponseCall.enqueue(new Callback<UsuarioResponse>() {
+            @Override
+            public void onResponse(Call<UsuarioResponse> call, Response<UsuarioResponse> response) {
+                UsuarioResponse usuarioResponse1 = response.body();
+                Log.d("ID_FIREBASE", usuarioResponse1.getId());
+                Log.d("TOKEN_FIREBASE", usuarioResponse1.getToken());
+                Log.d("ANIMAL_FIREBASE", usuarioResponse1.getAnimal());
+            }
+
+            @Override
+            public void onFailure(Call<UsuarioResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
 }

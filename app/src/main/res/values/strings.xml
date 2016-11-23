@@ -2,4 +2,6 @@
     <string name="app_name">Notificaciones</string>
     <string name="lanzar_notificacion">Lanzar Notificacion</string>
     <string name="recibir_notificaciones">Recibir notificaciones</string>
+    <string name="animal_emisor">Soy un lobo, da un toque al conejo</string>
+    <string name="animal_emisor_conejo">Soy un conejo, da un toque al lobo</string>
 </resources>

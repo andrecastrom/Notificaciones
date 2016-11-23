@@ -8,13 +8,15 @@ public class UsuarioResponse {
 
     private String id;
     private String token;
+    private String animal;
 
     public UsuarioResponse() {
     }
 
-    public UsuarioResponse(String id, String token) {
+    public UsuarioResponse(String id, String token, String animal) {
         this.id = id;
         this.token = token;
+        this.animal = animal;
     }
 
     public String getId() {
@@ -31,5 +33,13 @@ public class UsuarioResponse {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getAnimal() {
+        return animal;
+    }
+
+    public void setAnimal(String animal) {
+        this.animal = animal;
     }
 }
